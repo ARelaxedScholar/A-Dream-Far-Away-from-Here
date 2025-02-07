@@ -38,9 +38,9 @@ impl HandsOnGenerator {
                 rng.random_range(2..15),
             );
 
-            let overlaps = rooms.iter().any(|r| room.intersect(r));
+            let no_overlap = !rooms.iter().any(|r| room.intersect(r));
 
-            if !overlaps {
+            if no_overlap {
                 room.for_each(|point| {
                     if map.in_bounds(point) {
                         let index = Map::index(point.x, point.y);
